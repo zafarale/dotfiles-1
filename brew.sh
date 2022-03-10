@@ -21,7 +21,7 @@ brew install moreutils
 # Install GNU `find`, `locate`, `updatedb`, and `xargs`, `g`-prefixed.
 brew install findutils
 # Install GNU `sed`, overwriting the built-in `sed`.
-brew install gnu-sed --with-default-names
+#brew install gnu-sed --with-default-names
 # Install a modern version of Bash.
 brew install bash
 brew install bash-completion2
@@ -33,18 +33,18 @@ if ! fgrep -q "${BREW_PREFIX}/bin/bash" /etc/shells; then
 fi;
 
 # Install `wget` with IRI support.
-brew install wget --with-iri
+brew install wget #--with-iri
 
 # Install GnuPG to enable PGP-signing commits.
 brew install gnupg
 
 # Install more recent versions of some macOS tools.
-brew install vim --with-override-system-vi
+brew install vim #--with-override-system-vi
 brew install grep
 brew install openssh
-brew install screen
-brew install php
-brew install gmp
+#brew install screen
+#brew install php
+#brew install gmp
 
 # Install font tools.
 brew tap bramstein/webfonttools
@@ -54,18 +54,16 @@ brew install woff2
 
 # Install some CTF tools; see https://github.com/ctfs/write-ups.
 brew install aircrack-ng
-brew install bfg
 brew install binutils
 brew install binwalk
-brew install cifer
-brew install dex2jar
+
 brew install dns2tcp
 brew install fcrackzip
 brew install foremost
 brew install hashpump
 brew install hydra
 brew install john
-brew install knock
+#brew install knock
 brew install netpbm
 brew install nmap
 brew install pngcheck
@@ -82,20 +80,33 @@ brew install xz
 brew install ack
 #brew install exiv2
 brew install git
-brew install git-lfs
+#brew install git-lfs
 brew install gs
-brew install imagemagick --with-webp
-brew install lua
-brew install lynx
-brew install p7zip
+#brew install imagemagick --with-webp
+#brew install lua
+#brew install lynx
+#brew install p7zip
 brew install pigz
 brew install pv
 brew install rename
 brew install rlwrap
 brew install ssh-copy-id
 brew install tree
-brew install vbindiff
-brew install zopfli
+#brew install vbindiff
+#brew install zopfli
 
+# run this script when this file changes guy.
+brew install entr
+# mtr - ping & traceroute. best.
+brew install mtr
+# allow mtr to run without sudo
+mtrlocation=$(brew info mtr | grep Cellar | sed -e 's/ (.*//') #  e.g. `/Users/$USER/.homebrew/Cellar/mtr/0.86`
+sudo chmod 4755 $mtrlocation/sbin/mtr
+sudo chown root $mtrlocation/sbin/mtr
+
+brew install --cask iterm2 &
+brew install --cask visual-studio-code &
+brew install --cask google-chrome &
+brew install --cask firefox-developer-edition &
 # Remove outdated versions from the cellar.
 brew cleanup
